@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/Cookie-stand-api.props" />
+</Project>
