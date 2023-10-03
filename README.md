@@ -8,11 +8,7 @@ This documentation provides an overview of the available endpoints and how to us
 
 ![ERD](./CookieStandAPI.png)
 
-## Getting Started
 
-To get started with the Cookie Stand API, you will need to make HTTP requests to the provided endpoints. You can use tools like `curl` or Postman, or integrate the API into your application.
-
-Base URL: `https://your-cookie-stand-api.com/api`
 
 ## Endpoints
 
