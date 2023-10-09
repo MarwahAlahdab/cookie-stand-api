@@ -1,4 +1,35 @@
 ﻿<Properties StartupConfiguration="{579C79A3-3601-4EFB-B6EB-E328D36F8FEF}|https">
-  <MonoDevelop.Ide.ItemProperties.Cookie-stand-api FirstBuild="True" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="appsettings.json">
+    <Files>
+      <File FileName="Models/CookieStand.cs" />
+      <File FileName="Models/Interfaces/ICookieStandService.cs" Line="1" Column="1" />
+      <File FileName="Models/Services/CookieStandService.cs" Line="9" Column="3" />
+      <File FileName="Data/CookieStandDBContext.cs" />
+      <File FileName="appsettings.json" Line="4" Column="1" />
+      <File FileName="Program.cs" />
+      <File FileName="Controllers/CookieStandController.cs" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Cookie-stand-api">
+            <Node name="Cookie-stand-api">
+              <Node name="Models" expanded="True">
+                <Node name="Interfaces" expanded="True" />
+                <Node name="Services" expanded="True" />
+              </Node>
+              <Node name="appsettings.json" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Cookie-stand-api PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MultiItemStartupConfigurations />
 </Properties>
