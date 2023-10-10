@@ -1,76 +1,122 @@
-﻿using System;
-using Cookie_stand_api.Data;
-using Cookie_stand_api.Models.Interfaces;
+﻿using CookieStandApi.Data;
+using CookieStandApi.Models.Entities;
+using CookieStandAPI.Models.DTOs;
+using CookieStandAPI.Models.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Cookie_stand_api.Models.Services
+public class CookieStandService : ICookieStand
 {
-	public class CookieStandService : ICookieStandService
-	{
+    private readonly CookieStandDbContext _context;
 
-        private readonly CookieStandDBContext _context;
-        public CookieStandService(CookieStandDBContext context)
-		{
-            _context = context;
+    public CookieStandService(CookieStandDbContext context)
+    {
+        _context = context;
+    }
 
-        }
-
-        public async Task<CookieStand> CreateCookieStand(CookieStand cookieStand)
+    public async Task<CookieStandDto> Create(CookieStandDto cookieStandDto)
+    {
+        var cookieStandToAdd = new CookieStand
         {
-            _context.CookieStands.Add(cookieStand);
+            Location = cookieStandDto.Location,
+            Description = cookieStandDto.Description,
+            Minimum_Customers_Per_Hour = cookieStandDto.Minimum_Customers_Per_Hour,
+            Maximum_Customers_Per_Hour = cookieStandDto.Maximum_Customers_Per_Hour,
+            Average_Cookies_Per_Sale = cookieStandDto.Average_Cookies_Per_Sale,
+            Owner = cookieStandDto.Owner
+        };
+
+        await _context.CookieStands.AddAsync(cookieStandToAdd);
+        await _context.SaveChangesAsync();
+
+        cookieStandDto.Id = cookieStandToAdd.Id;
+        cookieStandDto.HourlySales = await GenerateHourlySales(cookieStandToAdd.Id, cookieStandToAdd.Minimum_Customers_Per_Hour, cookieStandToAdd.Maximum_Customers_Per_Hour, cookieStandToAdd.Average_Cookies_Per_Sale);
+
+        return cookieStandDto;
+    }
+
+    public async Task Delete(int id)
+    {
+        var existingCookieStand = await _context.CookieStands.FindAsync(id);
+        if (existingCookieStand != null)
+        {
+            _context.CookieStands.Remove(existingCookieStand);
             await _context.SaveChangesAsync();
-            return cookieStand;
         }
+    }
 
-     
-
-        public async Task<IEnumerable<CookieStand>> GetAllCookieStands()
+    public async Task<List<CookieStandDto>> GetCookieStands()
+    {
+        var cookieStands = await _context.CookieStands.Include(cs => cs.HourlySales).ToListAsync();
+        var cookieStandDtos = cookieStands.Select(cs => new CookieStandDto
         {
-            return await _context.CookieStands.ToListAsync();
-        }
+            Id = cs.Id,
+            Location = cs.Location,
+            Description = cs.Description,
+            Minimum_Customers_Per_Hour = cs.Minimum_Customers_Per_Hour,
+            Maximum_Customers_Per_Hour = cs.Maximum_Customers_Per_Hour,
+            Average_Cookies_Per_Sale = cs.Average_Cookies_Per_Sale,
+            Owner = cs.Owner,
+            HourlySales = cs.HourlySales.Select(hs => hs.HourSale).ToList()
+        }).ToList();
 
+        return cookieStandDtos;
+    }
 
-        public async Task<CookieStand> GetCookieStand(int id)
+    public async Task<CookieStandDto> GetCookieStandById(int id)
+    {
+        var cookieStand = await _context.CookieStands.Include(cs => cs.HourlySales).FirstOrDefaultAsync(cs => cs.Id == id);
+        var cookieStandDto = new CookieStandDto
         {
-            return await _context.CookieStands.FirstOrDefaultAsync(c => c.Id == id);
-        }
+            Id = cookieStand.Id,
+            Location = cookieStand.Location,
+            Description = cookieStand.Description,
+            Minimum_Customers_Per_Hour = cookieStand.Minimum_Customers_Per_Hour,
+            Maximum_Customers_Per_Hour = cookieStand.Maximum_Customers_Per_Hour,
+            Average_Cookies_Per_Sale = cookieStand.Average_Cookies_Per_Sale,
+            Owner = cookieStand.Owner,
+            HourlySales = cookieStand.HourlySales.Select(hs => hs.HourSale).ToList()
+        };
+        return cookieStandDto;
+    }
 
+    public async Task<CookieStandDto> Update(int id, CookieStandDto cookieStandDto)
+    {
+        var existingCookieStand = await _context.CookieStands.FindAsync(id);
 
-
-
-
-        public async Task<CookieStand> UpdateCookieStand(int id, CookieStand updatedCookieStand)
+        if (existingCookieStand != null)
         {
-            var cookieStand = await _context.CookieStands.FirstOrDefaultAsync(c => c.Id == id);
-            if (cookieStand != null)
-            {
-                cookieStand.Location = updatedCookieStand.Location;
-                cookieStand.Description = updatedCookieStand.Description;
-                cookieStand.MinimumCustomersPerHour = updatedCookieStand.MinimumCustomersPerHour;
-                cookieStand.MaximumCustomersPerHour = updatedCookieStand.MaximumCustomersPerHour;
-                cookieStand.AverageCookiesPerSale = updatedCookieStand.AverageCookiesPerSale;
-                cookieStand.Owner = updatedCookieStand.Owner;
-                cookieStand.HourlySales = updatedCookieStand.HourlySales;
+            // Update properties
+            existingCookieStand.Location = cookieStandDto.Location;
+            existingCookieStand.Description = cookieStandDto.Description;
+            existingCookieStand.Minimum_Customers_Per_Hour = cookieStandDto.Minimum_Customers_Per_Hour;
+            existingCookieStand.Maximum_Customers_Per_Hour = cookieStandDto.Maximum_Customers_Per_Hour;
+            existingCookieStand.Average_Cookies_Per_Sale = cookieStandDto.Average_Cookies_Per_Sale;
+            existingCookieStand.Owner = cookieStandDto.Owner;
 
-                _context.SaveChanges();
-            }
-            return cookieStand;
+            // Save changes to the database
+            await _context.SaveChangesAsync();
         }
 
+        return cookieStandDto;
+    }
 
+    public async Task<List<int>> GenerateHourlySales(int CookieStandId, int Minimum_Customers_Per_Hour, int Maximum_Customers_Per_Hour, double Average_Cookies_Per_Sale)
+    {
+        var random = new Random();
+        var hourlySalesList = new List<int>();
 
-        public async Task DeleteCookieStand(int id)
+        for (int hour = 1; hour <= 14; hour++)
         {
-            var cookieStand = _context.CookieStands.Find(id);
-            if (cookieStand != null)
-            {
-                _context.CookieStands.Remove(cookieStand);
-                _context.SaveChanges();
-            }
+            var customersThisHour = random.Next(Minimum_Customers_Per_Hour, Maximum_Customers_Per_Hour + 1);
+            var cookiesSoldThisHour = (int)(customersThisHour * Average_Cookies_Per_Sale);
+
+            hourlySalesList.Add(cookiesSoldThisHour);
         }
 
-
-
+        return hourlySalesList;
     }
 }
-

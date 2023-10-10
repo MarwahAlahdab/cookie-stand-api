@@ -1,44 +1,67 @@
-﻿using System.Collections.Generic;
-using Cookie_stand_api.Data;
-using Cookie_stand_api.Models.Interfaces;
-using Cookie_stand_api.Models.Services;
+using CookieStandApi.Data;
+using CookieStandApi.Models.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+using AutoMapper;
+using CookieStandAPI.Models.Interfaces;
 
-var builder = WebApplication.CreateBuilder(args);
-
-
-string connString = builder.Configuration.GetConnectionString("DefaultConnection");
-
-
-
-builder.Services.AddDbContext<CookieStandDBContext>(options =>
+namespace CookieStandAPI
 {
-    options.UseSqlServer(connString);
-});
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddTransient<ICookieStandService, CookieStandService>();
+            // Add services to the container.
+
+            string connString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+            builder.Services
+                .AddDbContext<CookieStandDbContext>(options => options.UseSqlServer(connString));
+
+            builder.Services.AddTransient<ICookieStand, CookieStandService>();
+          
+           // builder.Services.AddAutoMapper(typeof(Program));
 
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+            builder.Services.AddAuthentication();
+            builder.Services.AddAuthorization();
 
-var app = builder.Build();
+            builder.Services.AddControllers();
 
-// Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-//}
 
-app.UseHttpsRedirection();
+            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
 
-app.UseAuthorization();
+            builder.Services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    policy =>
+                    {
+                        policy.AllowAnyOrigin()
+                              .AllowAnyMethod()
+                              .AllowAnyHeader();
+                    });
+            });
+            var app = builder.Build();
 
-app.MapControllers();
+           
+            app.UseSwagger();
+            app.UseSwaggerUI();
+            
+            app.UseCors();
 
-app.Run();
+            app.UseHttpsRedirection();
 
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+
+            app.MapControllers();
+
+            app.Run();
+        }
+    }
+}

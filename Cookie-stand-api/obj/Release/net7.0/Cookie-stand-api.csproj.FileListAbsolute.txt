@@ -1,3 +1,10 @@
+/Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/obj/Release/net7.0/Cookie-stand-api.csproj.AssemblyReference.cache
+/Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/obj/Release/net7.0/Cookie-stand-api.GeneratedMSBuildEditorConfig.editorconfig
+/Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/obj/Release/net7.0/Cookie-stand-api.AssemblyInfoInputs.cache
+/Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/obj/Release/net7.0/Cookie-stand-api.AssemblyInfo.cs
+/Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/obj/Release/net7.0/Cookie-stand-api.csproj.CoreCompileInputs.cache
+/Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/obj/Release/net7.0/Cookie-stand-api.MvcApplicationPartsAssemblyInfo.cs
+/Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/obj/Release/net7.0/Cookie-stand-api.MvcApplicationPartsAssemblyInfo.cache
 /Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/bin/Release/net7.0/appsettings.Development.json
 /Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/bin/Release/net7.0/appsettings.json
 /Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/bin/Release/net7.0/Cookie-stand-api
@@ -5,9 +12,11 @@
 /Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/bin/Release/net7.0/Cookie-stand-api.runtimeconfig.json
 /Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/bin/Release/net7.0/Cookie-stand-api.dll
 /Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/bin/Release/net7.0/Cookie-stand-api.pdb
+/Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/bin/Release/net7.0/AutoMapper.dll
 /Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/bin/Release/net7.0/Azure.Core.dll
 /Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/bin/Release/net7.0/Azure.Identity.dll
 /Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/bin/Release/net7.0/Humanizer.dll
+/Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/bin/Release/net7.0/System.Net.Http.Formatting.dll
 /Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/bin/Release/net7.0/Microsoft.AspNetCore.OpenApi.dll
 /Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/bin/Release/net7.0/Microsoft.AspNetCore.Razor.Language.dll
 /Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/bin/Release/net7.0/Microsoft.Bcl.AsyncInterfaces.dll
@@ -53,6 +62,7 @@
 /Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/bin/Release/net7.0/Microsoft.Win32.SystemEvents.dll
 /Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/bin/Release/net7.0/Mono.TextTemplating.dll
 /Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/bin/Release/net7.0/Newtonsoft.Json.dll
+/Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/bin/Release/net7.0/Newtonsoft.Json.Bson.dll
 /Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/bin/Release/net7.0/NuGet.Common.dll
 /Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/bin/Release/net7.0/NuGet.Configuration.dll
 /Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/bin/Release/net7.0/NuGet.DependencyResolver.Core.dll
@@ -231,13 +241,6 @@
 /Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/bin/Release/net7.0/runtimes/win/lib/net6.0/System.Runtime.Caching.dll
 /Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/bin/Release/net7.0/runtimes/win/lib/net6.0/System.Security.Cryptography.ProtectedData.dll
 /Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/bin/Release/net7.0/runtimes/win/lib/net6.0/System.Windows.Extensions.dll
-/Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/obj/Release/net7.0/Cookie-stand-api.csproj.AssemblyReference.cache
-/Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/obj/Release/net7.0/Cookie-stand-api.GeneratedMSBuildEditorConfig.editorconfig
-/Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/obj/Release/net7.0/Cookie-stand-api.AssemblyInfoInputs.cache
-/Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/obj/Release/net7.0/Cookie-stand-api.AssemblyInfo.cs
-/Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/obj/Release/net7.0/Cookie-stand-api.csproj.CoreCompileInputs.cache
-/Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/obj/Release/net7.0/Cookie-stand-api.MvcApplicationPartsAssemblyInfo.cs
-/Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/obj/Release/net7.0/Cookie-stand-api.MvcApplicationPartsAssemblyInfo.cache
 /Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/obj/Release/net7.0/staticwebassets/msbuild.Cookie-stand-api.Microsoft.AspNetCore.StaticWebAssets.props
 /Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/obj/Release/net7.0/staticwebassets/msbuild.build.Cookie-stand-api.props
 /Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/obj/Release/net7.0/staticwebassets/msbuild.buildMultiTargeting.Cookie-stand-api.props
