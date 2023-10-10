@@ -28,7 +28,9 @@ namespace Cookie_stand_api.Controllers
         public async Task<ActionResult<CookieStand>> CreateCookieStand(CookieStand cookieStand)
         {
             var createdCookieStand = await _cookieStandService.CreateCookieStand(cookieStand);
-            return CreatedAtAction(nameof(GetCookieStand), new { id = createdCookieStand.Id }, createdCookieStand);
+            return Ok(createdCookieStand);
+
+            // return CreatedAtAction(nameof(GetCookieStand), new { id = createdCookieStand.Id }, createdCookieStand);
         }
 
 

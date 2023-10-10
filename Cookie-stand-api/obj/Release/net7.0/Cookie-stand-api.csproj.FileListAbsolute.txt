@@ -252,3 +252,5 @@
 /Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/obj/Release/net7.0/Cookie-stand-api.pdb
 /Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/obj/Release/net7.0/Cookie-stand-api.genruntimeconfig.cache
 /Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/obj/Release/net7.0/ref/Cookie-stand-api.dll
+/Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/bin/Release/net7.0/System.Net.Http.Formatting.dll
+/Users/marwaalahdab/Desktop/Advanced/cookie-stand-api/Cookie-stand-api/bin/Release/net7.0/Newtonsoft.Json.Bson.dll
