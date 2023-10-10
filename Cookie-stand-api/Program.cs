@@ -1,55 +1,67 @@
-﻿using System.Collections.Generic;
-using Cookie_stand_api.Data;
-using Cookie_stand_api.Models.Interfaces;
-using Cookie_stand_api.Models.Services;
+using CookieStandApi.Data;
+using CookieStandApi.Models.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+using AutoMapper;
+using CookieStandAPI.Models.Interfaces;
 
-var builder = WebApplication.CreateBuilder(args);
-
-
-string connString = builder.Configuration.GetConnectionString("DefaultConnection");
-
-
-
-builder.Services.AddDbContext<CookieStandDBContext>(options =>
+namespace CookieStandAPI
 {
-    options.UseSqlServer(connString);
-});
-
-builder.Services.AddTransient<ICookieStandService, CookieStandService>();
-
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowReactApp", builder =>
+    public class Program
     {
-        builder.WithOrigins("http://localhost:3000")
-               .AllowAnyHeader()
-               .AllowAnyMethod();
-    });
-});
+        public static void Main(string[] args)
+        {
+            var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+            // Add services to the container.
 
-var app = builder.Build();
+            string connString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-// Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-app.UseCors("AllowReactApp");
+            builder.Services
+                .AddDbContext<CookieStandDbContext>(options => options.UseSqlServer(connString));
 
-//}
+            builder.Services.AddTransient<ICookieStand, CookieStandService>();
+          
+           // builder.Services.AddAutoMapper(typeof(Program));
 
-app.UseHttpsRedirection();
 
-app.UseAuthorization();
+            builder.Services.AddAuthentication();
+            builder.Services.AddAuthorization();
 
-app.MapControllers();
+            builder.Services.AddControllers();
 
-app.Run();
 
+            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    policy =>
+                    {
+                        policy.AllowAnyOrigin()
+                              .AllowAnyMethod()
+                              .AllowAnyHeader();
+                    });
+            });
+            var app = builder.Build();
+
+           
+            app.UseSwagger();
+            app.UseSwaggerUI();
+            
+            app.UseCors();
+
+            app.UseHttpsRedirection();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+
+            app.MapControllers();
+
+            app.Run();
+        }
+    }
+}
