@@ -1,16 +1,21 @@
 ﻿<Properties StartupConfiguration="{579C79A3-3601-4EFB-B6EB-E328D36F8FEF}|https">
+  <MonoDevelop.Ide.ItemProperties.Cookie-stand-api PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Models/CookieStand.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
     <Files>
-      <File FileName="Models/CookieStand.cs" Line="23" Column="1" />
-      <File FileName="Models/Interfaces/ICookieStandService.cs" />
-      <File FileName="Models/Services/CookieStandService.cs" />
-      <File FileName="Data/CookieStandDBContext.cs" />
-      <File FileName="appsettings.json" />
-      <File FileName="Program.cs" Line="22" Column="25" />
-      <File FileName="Controllers/CookieStandController.cs" Line="23" Column="10" />
+      <File FileName="Models/CookieStand.cs" Line="19" Column="1" />
+      <File FileName="Models/Services/CookieStandService.cs" Line="102" Column="10" />
+      <File FileName="Models/Interfaces/ICookieStand.cs" Line="21" Column="1" />
+      <File FileName="Data/CookieStandDBContext.cs" Line="26" Column="6" />
+      <File FileName="appsettings.json" Line="13" Column="1" />
+      <File FileName="Program.cs" Line="16" Column="46" />
+      <File FileName="Models/HourlySale.cs" Line="14" Column="1" />
+      <File FileName="Models/DTOs/CookieStandDto.cs" Line="24" Column="2" />
+      <File FileName="Models/DTOs/HourlySaleDto.cs" Line="17" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -18,9 +23,14 @@
           <Node name="Cookie-stand-api">
             <Node name="Cookie-stand-api" expanded="True">
               <Node name="Controllers" expanded="True" />
+              <Node name="Data" expanded="True" />
               <Node name="Models" expanded="True">
-                <Node name="CookieStand.cs" selected="True" />
+                <Node name="DTOs" expanded="True" />
+                <Node name="Interfaces" expanded="True" />
+                <Node name="Services" expanded="True" />
               </Node>
+              <Node name="appsettings.json" expanded="True" />
+              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -28,7 +38,4 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.Cookie-stand-api PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>
